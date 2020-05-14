@@ -9,7 +9,7 @@ fl() {
 	}
 	ch() {
 		fl
-		if [ -e curl ] || [ -e php ] || [ -e figlet ] || [ -e ssh ] || [ httrack ];then
+		if [ -e curl ] || [ -e php ] || [ -e figlet ] || [ -e ssh ] || [ -e httrack ];then
 		echo
 		else
 		printf "\n\n\033[1;91m Please install curl , php , figlet . openssh and httrack\n\n"
@@ -19,7 +19,7 @@ fl() {
 		ch
 R() {
 	cd ~/H-Cam2
-	python.random.py
+	python .random.py
 	}
 banner() {
 R
